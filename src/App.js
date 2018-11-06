@@ -64,17 +64,17 @@ class App extends Component {
         return (
             <div className="Site">
                 <div className="Site-content">
-                <h1 className="game-title">Tic Tac Toe</h1>
+                    <h1 className="game-title">Tic Tac Toe</h1>
                     <div className="game">
                         <div className="game-board">
                             <Board
                                 squares={current.squares}
                                 onClick={i => this.handleClick(i)} />
                         </div>
-                        <div className="game-info">
-                            <div className="status">{status}</div>
-                            <ol>{moves}</ol>
-                        </div>
+                    </div>
+                    <div className="game-info">
+                        <div className="status">{status}</div>
+                        <ol>{moves}</ol>
                     </div>
                 </div>
                 <div className="footer-container">
