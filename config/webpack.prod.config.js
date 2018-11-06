@@ -15,8 +15,13 @@ const prodConfiguration = env => {
                 minimizer: [new UglifyJSPlugin()],
             },
             plugins: [
-                new MiniCssExtractPlugin(),
-                new OptimizeCssAssetsPlugin(),
+                new MiniCssExtractPlugin('style/style-[contenthash:8].css'),
+                new OptimizeCssAssetsPlugin({
+                    assetNameRegExp: /\.optimize\.css$/g,
+                    cssProcessor: require('cssnano'),
+                    cssProcessorOptions: { discardComments: { removeAll: true } },
+                    canPrint: true
+                }),
                 new Visualizer({ filename: './statistics.html' })
             ]
         }
