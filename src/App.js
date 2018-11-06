@@ -55,10 +55,10 @@ class App extends Component {
         })
 
         let status;
-        if(winner) {
-            status = `Winner: ${winner}`;
-        } else if (status !== `Winner: ${winner}`) {
+        if(history.length - 1 === 9 && !winner) {
             status = `Game draw`;
+        } else if (winner) {
+            status = `Winner: ${winner}`;
         } else {
             status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
         }
