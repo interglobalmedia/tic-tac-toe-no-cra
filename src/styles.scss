@@ -13,6 +13,11 @@ ul {
     margin-left: -25px;
 }
 
+ol li button {
+    border-radius: 5px;
+    padding: 3px;
+}
+
 .board {
     display: flex;
     justify-content: center;
