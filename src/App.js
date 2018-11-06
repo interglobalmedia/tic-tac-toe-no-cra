@@ -57,10 +57,12 @@ class App extends Component {
         let status;
         if(winner) {
             status = `Winner: ${winner}`;
+        } else if (status !== `Winner: ${winner}`) {
+            status = `Game draw`;
         } else {
             status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
         }
-
+        
         return (
             <div className="Site">
                 <div className="Site-content">
