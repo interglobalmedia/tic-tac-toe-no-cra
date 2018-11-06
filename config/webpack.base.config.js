@@ -2,12 +2,20 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const merge = require('webpack-merge');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const VENDOR_LIBS = [
-    'core-js', 'react', 'react-dom'
+const VENDOR_LIBS_CORE = [
+    'core-js'
+]
+
+const VENDOR_LIBS_REACT = [
+    'react'
+]
+
+const VENDOR_LIBS_DOM = [
+    'react-dom'
 ]
 
 module.exports = env => {
@@ -18,7 +26,9 @@ module.exports = env => {
         {
             entry: {
                 bundle: './src/index.js',
-                vendor: VENDOR_LIBS
+                vendor1: VENDOR_LIBS_CORE,
+                vendor2: VENDOR_LIBS_REACT,
+                vendor3: VENDOR_LIBS_DOM
             },
             output: {
                 filename: PLATFORM === 'production' ? 'scripts/[name]-[chunkhash:8].js' : 'scripts/[name].js',
@@ -58,7 +68,33 @@ module.exports = env => {
                             options: {
                                 name: '[path][name]-[hash:8].[ext]'
                             },
-                        },]
+                        }],
+                    },
+                    {
+                        test: /\.(jpg|png|gif|svg|pdf|ico)$/,
+                        use: [{
+                            loader: 'image-webpack-loader',
+                            options: {
+                                mozjpeg: {
+                                    progressive: true,
+                                    quality: 65
+                                },
+                                // optipng.enabled: false will disable optipng
+                                optipng: {
+                                    enabled: false,
+                                },
+                                pngquant: {
+                                    enabled: false,
+                                },
+                                gifsicle: {
+                                    interlaced: false,
+                                },
+                                // the webp option will enable WEBP
+                                webp: {
+                                    quality: 75
+                                }
+                            }
+                        }],
                     },
                 ]
             },
@@ -79,7 +115,14 @@ module.exports = env => {
                     'process.env.VERSION': JSON.stringify(env.VERSION),
                     'process.env.PLATFORM': JSON.stringify(env.PLATFORM)
                 }),
-            ]
+                new ImageminPlugin({
+                    disable: false,
+                    jpegtran: {
+                        progressive: false
+                    },
+                }),
+                new webpack.optimize.AggressiveMergingPlugin(),
+            ],
         }
     ])
 }
