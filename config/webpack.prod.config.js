@@ -15,7 +15,7 @@ const prodConfiguration = env => {
                 minimizer: [new UglifyJSPlugin()],
             },
             plugins: [
-                new MiniCssExtractPlugin('style/style-[contenthash:8].css'),
+                new MiniCssExtractPlugin(),
                 new OptimizeCssAssetsPlugin({
                     assetNameRegExp: /\.optimize\.css$/g,
                     cssProcessor: require('cssnano'),
