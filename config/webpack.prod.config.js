@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -12,10 +13,14 @@ const prodConfiguration = env => {
     return merge([
         {
             optimization: {
-                minimizer: [new UglifyJSPlugin()],
+                splitChunks: {
+                    chunks: 'all',
+                        minSize: 0
+                }, 
+                minimizer: [new UglifyJSPlugin()]
             },
             plugins: [
-                new MiniCssExtractPlugin(),
+                new webpack.HashedModuleIdsPlugin(),
                 new OptimizeCssAssetsPlugin(),
                 new Visualizer({ filename: './statistics.html' })
             ]

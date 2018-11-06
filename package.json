@@ -8,7 +8,6 @@
         "test": "jest",
         "clean": "rimraf dist",
         "cleanSrc": "rimraf dist/src",
-        "cleanSrc": "rimraf dist/src",
         "start": "webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback --env.PLATFORM=local --env.VERSION=stag",
         "predeploy": "webpack --mode production --config config/webpack.prod.config.js --env.PLATFORM=production --env.VERSION=stag --progress",
         "deploy": "gh-pages -d dist"
@@ -54,7 +53,6 @@
         "eslint-plugin-import": "^2.14.0",
         "eslint-plugin-jsx-a11y": "^6.1.2",
         "eslint-plugin-react": "^7.11.1",
-        "extract-text-webpack-plugin": "^3.0.2",
         "file-loader": "^2.0.0",
         "html-loader": "^0.5.5",
         "html-webpack-plugin": "^3.2.0",

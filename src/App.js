@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Board from './components/Board';
-import {CalculateWinner} from './components/CalculateWinner';
+import Board from './components/board/Board';
+import {CalculateWinner} from './components/utils/CalculateWinner';
+import styles from './App.scss';
 
 class App extends Component {
     constructor(props) {
@@ -47,7 +48,7 @@ class App extends Component {
             `Go to game start`;
             return (
                 <li key={move}>
-                    <button className="btn" onClick={() => this.jumpTo(move)}>
+                    <button className={styles.btn} onClick={() => this.jumpTo(move)}>
                     {desc}
                     </button>
                 </li>
@@ -64,24 +65,24 @@ class App extends Component {
         }
         
         return (
-            <div className="Site">
-                <div className="Site-content">
-                    <h1 className="game-title">Tic Tac Toe</h1>
-                    <div className="game">
-                        <div className="game-board">
+            <div className={styles.Site}>
+                <div className={styles.Sitecontent}>
+                    <h1 className={styles.gametitle}>Tic Tac Toe</h1>
+                    <div className={styles.game}>
+                        <div>
                             <Board
                                 squares={current.squares}
                                 onClick={i => this.handleClick(i)} />
                         </div>
                     </div>
-                    <div className="game-info">
-                        <div className="status">{status}</div>
+                    <div className={styles.gameinfo}>
+                        <div className={styles.status}>{status}</div>
                         <ol>{moves}</ol>
                     </div>
                 </div>
-                <div className="footer-container">
-                    <footer className="site-footer">
-                        <p className="identity">© 2018 Maria D. Campbell</p>
+                <div className={styles.footercontainer}>
+                    <footer className={styles.sitefooter}>
+                        <p className={styles.identity}>© 2018 Maria D. Campbell</p>
                     </footer>
                 </div>
             </div>
