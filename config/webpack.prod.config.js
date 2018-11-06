@@ -16,12 +16,7 @@ const prodConfiguration = env => {
             },
             plugins: [
                 new MiniCssExtractPlugin(),
-                new OptimizeCssAssetsPlugin({
-                    assetNameRegExp: /\.optimize\.css$/g,
-                    cssProcessor: require('cssnano'),
-                    cssProcessorOptions: { discardComments: { removeAll: true } },
-                    canPrint: true
-                }),
+                new OptimizeCssAssetsPlugin(),
                 new Visualizer({ filename: './statistics.html' })
             ]
         }
