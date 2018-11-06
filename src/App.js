@@ -47,7 +47,7 @@ class App extends Component {
             `Go to game start`;
             return (
                 <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>
+                    <button className="btn" onClick={() => this.jumpTo(move)}>
                     {desc}
                     </button>
                 </li>
