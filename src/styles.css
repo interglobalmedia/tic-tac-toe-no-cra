@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Muli");
 body {
   font: 14px 'Muli', sans-serif;
-  margin: 25px;
-  background: url("/images/nasa-90395-unsplash.jpg") center center no-repeat;
-  background-size: cover; }
+  margin: 25px; }
 
 .game-title {
   text-align: center; }
@@ -74,7 +72,7 @@ ul {
 footer {
   width: 100%;
   height: 50px;
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
   padding-top: 20px; }
 
 footer p {
