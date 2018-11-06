@@ -14,9 +14,11 @@ const prodConfiguration = env => {
         {
             optimization: {
                 splitChunks: {
-                    chunks: 'all',
-                        minSize: 0
-                }, 
+                    cacheGroups: {
+                        default: false,
+                        vendors: false
+                    },
+                },
                 minimizer: [new UglifyJSPlugin()]
             },
             plugins: [
