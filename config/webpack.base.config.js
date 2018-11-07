@@ -2,8 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const merge = require('webpack-merge');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const VENDOR_LIBS_CORE = [
@@ -69,32 +68,6 @@ module.exports = env => {
                             },
                         }],
                     },
-                    {
-                        test: /\.(jpg|png|gif|svg|pdf|ico)$/,
-                        use: [{
-                            loader: 'image-webpack-loader',
-                            options: {
-                                mozjpeg: {
-                                    progressive: true,
-                                    quality: 65
-                                },
-                                // optipng.enabled: false will disable optipng
-                                optipng: {
-                                    enabled: false,
-                                },
-                                pngquant: {
-                                    enabled: false,
-                                },
-                                gifsicle: {
-                                    interlaced: false,
-                                },
-                                // the webp option will enable WEBP
-                                webp: {
-                                    quality: 75
-                                }
-                            }
-                        }],
-                    },
                 ]
             },
             plugins: [
@@ -113,12 +86,6 @@ module.exports = env => {
                 new webpack.DefinePlugin({
                     'process.env.VERSION': JSON.stringify(env.VERSION),
                     'process.env.PLATFORM': JSON.stringify(env.PLATFORM)
-                }),
-                new ImageminPlugin({
-                    disable: false,
-                    jpegtran: {
-                        progressive: false
-                    },
                 }),
             ],
         }
