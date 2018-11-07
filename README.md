@@ -11,9 +11,9 @@ Purportedly the [html-webpack-plugin](https://github.com/jantimon/html-webpack-p
 
 The [extract-text-webpack-plugin](https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/701) does not play well with webpack 4. Word is to replace it with the [mini-css-extract-plugin](https://webpack.js.org/plugins/mini-css-extract-plugin/) instead. This works very well.
 
-The **CommonsChunkPlugin** has been removed from `the internal webpack graph`. It has been replaced by `optimization.splitChunks`. To learn more, please visit the webpack docs: [SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/);
+The **CommonsChunkPlugin** has been removed from `the internal webpack graph`. It has been replaced by `optimization.splitChunks`. To learn more, please visit the webpack docs: [SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/).
 
-I am looking further into the packages containing the vulnerabilities, including the webpack docs. No answers in the plugin repos themselves. Perhaps [Webpack] has some alternatives (none that I know of yet).
+I am looking further into the packages containing the vulnerabilities, including the webpack docs. No answers in the plugin repos themselves. Perhaps [Webpack](https://webpack.js.org/) has some alternatives (none that I know of yet).
 
 **Update:** Have not yet found working alternatives. That means reducing the size of the image BEFORE adding it to the application.
 
