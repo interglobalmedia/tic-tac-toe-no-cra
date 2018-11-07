@@ -22,7 +22,6 @@ module.exports = env => {
     
     const {PLATFORM, VERSION } = env;
     return merge([
-        
         {
             entry: {
                 bundle: './src/index.js',
@@ -121,7 +120,6 @@ module.exports = env => {
                         progressive: false
                     },
                 }),
-                new webpack.optimize.AggressiveMergingPlugin(),
             ],
         }
     ])
