@@ -20,6 +20,9 @@ const prodConfiguration = env => {
                         vendors: false
                     },
                 },
+                runtimeChunk: {
+                    name: 'manifest',
+                },
                 minimizer: [new UglifyJSPlugin()],
             },
             plugins: [
