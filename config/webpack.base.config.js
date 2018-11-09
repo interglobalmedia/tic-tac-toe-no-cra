@@ -5,16 +5,8 @@ const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const VENDOR_LIBS_CORE = [
-    'core-js'
-]
-
-const VENDOR_LIBS_REACT = [
-    'react'
-]
-
-const VENDOR_LIBS_DOM = [
-    'react-dom'
+const VENDOR_LIBS = [
+    'react', 'react-dom'
 ]
 
 module.exports = env => {
@@ -24,9 +16,7 @@ module.exports = env => {
         {
             entry: {
                 bundle: './src/index.js',
-                vendor1: VENDOR_LIBS_CORE,
-                vendor2: VENDOR_LIBS_REACT,
-                vendor3: VENDOR_LIBS_DOM
+                vendor: VENDOR_LIBS
             },
             output: {
                 filename: PLATFORM === 'production' ? 'scripts/[name]-[chunkhash:8].js' : 'scripts/[name].js',
@@ -35,7 +25,7 @@ module.exports = env => {
             module: {
                 rules: [
                     {
-                        test: /\.js$/,
+                        test: /\.js?/,
                         exclude: /node_modules/,
                         use: {
                             loader: 'babel-loader'
@@ -72,15 +62,14 @@ module.exports = env => {
             },
             plugins: [
                 new HtmlWebpackPlugin({
-                    template: './src/index.html',
-                    filename: './index.html',
+                    template: 'src/index.html',
                     favicon: 'src/favicon.ico',
+                    styles: 'src/styles.css',
                     inject: true
                 }),
                 new webpack.NamedModulesPlugin(),
                 new MiniCssExtractPlugin({
-                    filename: PLATFORM === 'production' ? 'styles/[name].[hash].css' : 'styles/[name].css',
-                    chunkFilename: PLATFORM === 'production' ? '[id].[hash].css]' : '[id].css',
+                    filename: PLATFORM === 'production' ? 'styles/[name].[hash].css' : '[name].css',
                 }),
                 new CopyWebpackPlugin([ {from: 'src/static'}]),
                 new webpack.DefinePlugin({

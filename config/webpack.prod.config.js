@@ -17,7 +17,7 @@ const prodConfiguration = env => {
                 splitChunks: {
                     cacheGroups: {
                         default: false,
-                        vendors: false
+                        vendors: false,
                     },
                 },
                 runtimeChunk: {
