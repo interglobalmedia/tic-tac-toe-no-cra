@@ -15,8 +15,8 @@ module.exports = env => {
     return merge([
         {
             entry: {
-                bundle: './src/index.js',
-                vendor: VENDOR_LIBS
+                vendor: VENDOR_LIBS,
+                bundle: './src/index.js'
             },
             output: {
                 filename: PLATFORM === 'production' ? 'scripts/[name]-[chunkhash:8].js' : 'scripts/[name].js',
