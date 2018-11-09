@@ -31,7 +31,7 @@ const prodConfiguration = env => {
                 new Visualizer({ filename: './statistics.html' })
             ]
         }
-    ])
+    ])  
 }
 
 module.exports = env => {
