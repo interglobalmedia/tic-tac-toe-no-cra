@@ -69,7 +69,7 @@ module.exports = env => {
                 }),
                 new webpack.NamedModulesPlugin(),
                 new MiniCssExtractPlugin({
-                    filename: PLATFORM === 'production' ? 'styles/[name].[hash].css' : '[name].css',
+                    filename: PLATFORM === 'production' ? 'styles/[name]-[hash].css' : '[name].css',
                 }),
                 new CopyWebpackPlugin([ {from: 'src/static'}]),
                 new webpack.DefinePlugin({
